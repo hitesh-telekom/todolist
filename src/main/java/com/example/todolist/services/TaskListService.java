@@ -31,16 +31,12 @@ public class TaskListService {
    @GetMapping(value = "/{id}")
    public TaskList getTaskList(@PathVariable String id){
       Optional<TaskList> taskListOptional = taskListRepository.findById(id);
-      if(!taskListOptional.isPresent()){
-         return null;
-      }
-      return taskListOptional.get();
+      return taskListOptional.orElse(null);
    }
 
    @PostMapping(value = "")
    public TaskList createTaskList(@RequestBody TaskList taskList){
-      TaskList savedTaskList = taskListRepository.save(taskList);
-      return savedTaskList;
+      return taskListRepository.save(taskList);
    }
 
    @PatchMapping(value = "")
@@ -78,9 +74,7 @@ public class TaskListService {
 
       task.setId(new ObjectId().toString());
       taskList.getTaskList().add(task);
-      TaskList updatedTaskList = taskListRepository.save(taskList);
-
-      return updatedTaskList;
+      return taskListRepository.save(taskList);
    }
 
    @PatchMapping(value = "/{id}/tasks")
@@ -100,8 +94,7 @@ public class TaskListService {
                   .collect(Collectors.toList());
 
       taskList.setTaskList(updatedTasks);
-      TaskList updatedTaskList = taskListRepository.save(taskList);
-      return updatedTaskList;
+      return taskListRepository.save(taskList);
    }
 
    @DeleteMapping(value = "/{id}/tasks")
@@ -121,8 +114,7 @@ public class TaskListService {
             .collect(Collectors.toList());
 
       taskList.setTaskList(updatedTasks);
-      TaskList updatedTaskList = taskListRepository.save(taskList);
-      return updatedTaskList;
+      return taskListRepository.save(taskList);
    }
 
 }

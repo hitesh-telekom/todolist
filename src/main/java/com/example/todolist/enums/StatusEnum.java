@@ -10,7 +10,7 @@ public enum StatusEnum {
    STASHED("stashed"),
    DONE("done");
 
-   private String value;
+   private final String value;
 
    @JsonCreator
    public StatusEnum fromValue(String status) {
