@@ -43,7 +43,7 @@ public class TaskListService {
    public TaskList updateTaskList(@RequestBody TaskList taskList) throws Exception {
       validationService.validateUpdateTaskList(taskList);
       Optional<TaskList> taskListOptional = taskListRepository.findById(taskList.getId());
-      if(!taskListOptional.isPresent()){
+      if(taskListOptional.isEmpty()){
          return null;
       }
 
@@ -63,7 +63,7 @@ public class TaskListService {
       validationService.validateCreateTaskRequest(taskListId, task);
 
       Optional<TaskList> taskListOptional = taskListRepository.findById(taskListId);
-      if(!taskListOptional.isPresent()){
+      if(taskListOptional.isEmpty()){
          return null;
       }
 
@@ -82,7 +82,7 @@ public class TaskListService {
       validationService.validateUpdateTaskRequest(taskListId, updatedTask);
 
       Optional<TaskList> taskListOptional = taskListRepository.findById(taskListId);
-      if(!taskListOptional.isPresent()){
+      if(taskListOptional.isEmpty()){
          return null;
       }
 
@@ -102,7 +102,7 @@ public class TaskListService {
       validationService.validateDeleteTaskRequest(taskListId, taskId);
 
       Optional<TaskList> taskListOptional = taskListRepository.findById(taskListId);
-      if(!taskListOptional.isPresent()){
+      if(taskListOptional.isEmpty()){
          return null;
       }
 
