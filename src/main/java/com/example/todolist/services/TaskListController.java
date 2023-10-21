@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/taskList")
-public class TaskListService {
+public class TaskListController {
 
     @Autowired
     TaskListRepository taskListRepository;
@@ -98,7 +98,6 @@ public class TaskListService {
         return taskListRepository.save(taskList);
     }
 
-
     @DeleteMapping(value = "/{id}/tasks")
     public TaskList deleteTask(@PathVariable("id") String taskListId, @RequestParam("id") String taskId) throws Exception {
         validationService.validateDeleteTaskRequest(taskListId, taskId);
@@ -119,7 +118,7 @@ public class TaskListService {
         return taskListRepository.save(taskList);
     }
 
-
+    /* Rewards related API */
     @PostMapping(value = "/{id}/rewards")
     public TaskList createReward(@PathVariable("id") String taskListId, @RequestBody Reward reward) throws Exception {
         validationService.validateCreateRewardRequest(taskListId, reward);
@@ -139,7 +138,6 @@ public class TaskListService {
         return taskListRepository.save(taskList);
     }
 
-    // generate a new api update reward list similar to the update task api provided below.
     @PatchMapping(value = "/{id}/rewards")
     public TaskList updateReward(@PathVariable("id") String taskListId, @RequestBody Reward updatedReward) throws Exception {
         validationService.validateUpdateRewardRequest(taskListId, updatedReward);
@@ -158,7 +156,6 @@ public class TaskListService {
         return taskListRepository.save(taskList);
     }
 
-    // generate a new api delete reward similar to the deleteTask api provided below.
     @DeleteMapping(value = "/{id}/rewards")
     public TaskList deleteReward(@PathVariable("id") String taskListId, @RequestParam("id") String rewardId) throws Exception {
         validationService.validateDeleteRewardRequest(taskListId, rewardId);
