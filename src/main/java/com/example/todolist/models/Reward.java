@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class Reward {
    private String id;
    private String title;
+   private int points;
 }
