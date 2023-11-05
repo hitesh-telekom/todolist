@@ -1,9 +1,10 @@
-package com.example.todolist.services;
+package com.example.todolist.controllers;
 
 import com.example.todolist.models.Reward;
 import com.example.todolist.models.Task;
 import com.example.todolist.models.TaskList;
 import com.example.todolist.repositories.TaskListRepository;
+import com.example.todolist.services.ValidationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(value = "/api/taskList")
 public class TaskListController {
+
+    @GetMapping("/home")
+    public String home() {
+        return "Hello World!";
+    }
 
     @Autowired
     TaskListRepository taskListRepository;
